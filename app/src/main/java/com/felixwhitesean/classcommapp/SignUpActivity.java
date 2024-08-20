@@ -1,6 +1,7 @@
 package com.felixwhitesean.classcommapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,8 +18,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
-    private Button Button, Register;
+    private Button btn, Register;
     private EditText email, Password;
+    private static final String PREFS_NAME = "UserLoginPrefs";
+    private static final String IS_LOGGED_IN = "IsLoggedIn";
 
 
     @Override
@@ -38,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.signup_activity);
 
         mAuth = FirebaseAuth.getInstance();
-        Button = findViewById(R.id.Button);
+        btn = findViewById(R.id.Button);
         Register = findViewById(R.id.signupBtn);
         email = findViewById(R.id.Email);
         Password = findViewById(R.id.Passwrd);
@@ -60,19 +63,25 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(String.valueOf(email), passwrd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(Email, passwrd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+                            // Save login state
+                            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putBoolean(IS_LOGGED_IN, true);
+                            editor.apply();
+
                             Toast.makeText(SignUpActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
 
                             // If sign in fails, display a message to the user.
-
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "Sign up failed. Please try again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
