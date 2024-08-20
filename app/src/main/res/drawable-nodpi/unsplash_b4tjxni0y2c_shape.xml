@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- unsplash_b4tjxni0y2c from your XD file. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+	android:shape="rectangle" >
+	<corners android:radius="2dp" />
+	<solid android:color="@color/rectangle_1_color" />
+</shape>
+

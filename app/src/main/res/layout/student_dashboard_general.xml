@@ -1,0 +1,478 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/horizontalScrollView"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+	<!--
+    /*
+     *	This content is generated from the API File Info.
+     *	(Alt+Shift+Ctrl+I).
+     *
+     *	@desc
+     *	@file 		student_dashboard_general
+     *	@date 		Wednesday 10th of July 2024 07:18:27 PM
+     *	@title 		Page 1
+     *	@author
+     *	@keywords
+     *	@generator 	Export Kit v1.3.figma
+     *
+     */
+    -->
+
+	<View
+		android:id="@+id/_bg__student_dashboard_general_ek2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/_bg__student_dashboard_general_ek2_shape"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<View
+		android:id="@+id/rectangle_2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:alpha="0.5"
+		android:background="@drawable/rectangle_2_shape"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<View
+		android:id="@+id/rectangle_3_ek1"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:layout_margin="5dp"
+		android:alpha="0.5"
+		android:background="@drawable/rectangle_3_ek1_shape"
+		app:layout_constraintBottom_toBottomOf="@+id/_bg__student_dashboard_general_ek2"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/rectangle_1" />
+
+
+	<View
+		android:id="@+id/rectangle_4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:alpha="0.5"
+		android:background="@drawable/rectangle_4_shape"
+		app:layout_constraintEnd_toEndOf="@+id/rectangle_3_ek1"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/rectangle_1" />
+
+	<ImageView
+		android:id="@+id/ellipse_24"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_alignParentStart="true"
+		android:alpha="0.7"
+		android:contentDescription="ellipse_24"
+		android:src="@drawable/ellipse_24"
+		app:layout_constraintBottom_toBottomOf="@+id/rectangle_3_ek1"
+		app:layout_constraintEnd_toEndOf="@+id/_bg__student_dashboard_general_ek2"
+		app:layout_constraintStart_toStartOf="@id/_bg__student_dashboard_general_ek2"
+		app:layout_constraintTop_toTopOf="@id/_bg__student_dashboard_general_ek2" />
+
+	<!--	<View-->
+	<!--		android:id="@+id/rectangle_11"-->
+	<!--		android:layout_width="wrap_content"-->
+	<!--		android:layout_height="wrap_content"-->
+	<!--		android:alpha="0.30000001192093"-->
+	<!--		android:background="@drawable/rectangle_11_shape" />-->
+
+
+	<View
+		android:id="@+id/rectangle_1"
+		android:layout_width="0dp"
+		android:layout_height="80dp"
+		android:layout_alignParentStart="true"
+		android:layout_margin="5dp"
+		android:background="@drawable/rectangle_1_shape"
+		app:layout_constraintEnd_toEndOf="@+id/_bg__student_dashboard_general_ek2"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+
+	<TextView
+		android:id="@+id/student_s_dashboard"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="Inter"
+		android:text="@string/student_s_dashboard_string"
+		android:textColor="@color/_bg__student_dashboard_general_ek2_color"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="@id/rectangle_1"
+		app:layout_constraintEnd_toEndOf="@id/rectangle_1"
+		app:layout_constraintHorizontal_bias="0.319"
+		app:layout_constraintStart_toEndOf="@+id/icon"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.523" />
+
+	<Button
+		android:id="@+id/icon"
+		android:layout_width="32dp"
+		android:layout_height="26dp"
+		android:layout_marginLeft="35dp"
+		android:background="@drawable/icon"
+		android:contentDescription="icon"
+		app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"
+		app:layout_constraintEnd_toStartOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="@+id/rectangle_1"
+		app:layout_constraintTop_toTopOf="@+id/rectangle_1"
+		app:layout_constraintVertical_bias="0.533" />
+
+	<RelativeLayout
+		android:id="@id/container"
+		android:layout_width="match_parent"
+		android:layout_height="120dp"
+		app:layout_constraintTop_toBottomOf="@+id/rectangle_1">
+
+
+		<!--	<View-->
+		<!--		android:id="@+id/unsplash_b4tjxni0y2c"-->
+		<!--		android:layout_width="wrap_content"-->
+		<!--		android:layout_height="wrap_content"-->
+		<!--		android:background="@drawable/unsplash_b4tjxni0y2c_shape" />-->
+
+		<View
+			android:id="@+id/rectangle_27"
+			android:layout_width="match_parent"
+			android:layout_height="135dp"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentBottom="true"
+			android:layout_margin="5dp"
+			android:layout_marginStart="5dp"
+			android:layout_marginTop="1dp"
+			android:layout_marginEnd="4dp"
+			android:background="@drawable/rectangle_27_shape"
+			app:layout_constraintStart_toStartOf="parent" />
+
+		<ImageView
+			android:id="@+id/unsplash_b4tjxni0y2c_ek1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentTop="true"
+			android:layout_marginStart="31dp"
+			android:layout_marginTop="36dp"
+			android:contentDescription="unsplash_b4tjxni0y2c_ek1"
+			android:src="@drawable/unsplash_b4tjxni0y2c_ek1" />
+
+
+		<TextView
+			android:id="@+id/username"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentEnd="true"
+			android:layout_marginStart="36dp"
+			android:layout_marginTop="19dp"
+			android:layout_marginEnd="188dp"
+			android:layout_toEndOf="@+id/unsplash_b4tjxni0y2c_ek1"
+			android:fontFamily="Inter"
+			android:minWidth="120dp"
+			android:text="@string/kariuki_ian_string"
+			android:textColor="@color/_bg__student_dashboard_general_ek2_color"
+			android:textSize="16sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/department"
+			android:layout_width="wrap_content"
+			android:layout_height="29dp"
+			android:layout_below="@+id/username"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentBottom="true"
+			android:layout_marginStart="36dp"
+			android:layout_marginTop="14dp"
+			android:layout_marginEnd="187dp"
+			android:layout_marginBottom="38dp"
+			android:layout_toEndOf="@+id/unsplash_b4tjxni0y2c_ek1"
+			android:fontFamily="Inter"
+			android:minWidth="120dp"
+			android:text="@string/scit_string"
+			android:textColor="@color/_bg__student_dashboard_general_ek2_color"
+			android:textSize="16sp" />
+
+		<TextView
+			android:id="@+id/_2024_06_16"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentBottom="true"
+			android:layout_marginTop="36dp"
+			android:layout_marginEnd="46dp"
+			android:layout_marginBottom="53dp"
+			android:fontFamily="Inter"
+			android:text="@string/_2024_06_16_string"
+			android:textColor="@color/_bg__student_dashboard_general_ek2_color"
+			android:textSize="14sp" />
+	</RelativeLayout>
+
+	<!--	<View-->
+	<!--		android:id="@+id/rectangle_5"-->
+	<!--		android:layout_width="0dp"-->
+	<!--		android:layout_height="100dp"-->
+	<!--		android:alpha="0.30000001192093"-->
+	<!--		android:background="@drawable/rectangle_5_shape"-->
+	<!--		app:layout_constraintEnd_toEndOf="@+id/rectangle_24"-->
+	<!--		app:layout_constraintStart_toStartOf="@+id/rectangle_24"-->
+	<!--		app:layout_constraintTop_toTopOf="@+id/rectangle_24" />-->
+	<RelativeLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="25dp"
+		android:layout_marginTop="50dp"
+		android:background="@drawable/rectangle_26_shape"
+		android:paddingBottom="80dp"
+		android:layout_marginLeft="30dp"
+		android:layout_marginRight="30dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/container">
+
+		<!--		<View-->
+		<!--			android:id="@+id/rectangle_26"-->
+		<!--			android:layout_width="359dp"-->
+		<!--			android:layout_height="wrap_content"-->
+		<!--			android:layout_marginHorizontal="20dp"-->
+		<!--			android:layout_marginBottom="50dp"-->
+		<!--			android:contentDescription="rectangle_24"-->
+		<!--			app:layout_constraintBottom_toBottomOf="@+id/_bg__student_dashboard_general_ek2"-->
+		<!--			app:layout_constraintEnd_toEndOf="@+id/_bg__student_dashboard_general_ek2"-->
+		<!--			app:layout_constraintStart_toStartOf="@+id/_bg__student_dashboard_general_ek2"-->
+		<!--			app:layout_constraintTop_toBottomOf="@+id/container" />-->
+
+		<View
+			android:id="@+id/rectangle_3"
+			android:layout_width="0dp"
+			android:layout_height="57dp"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentEnd="true"
+			android:background="@drawable/rectangle_3_shape" />
+
+		<TextView
+			android:id="@+id/general_settings"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@+id/rectangle_3"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:layout_marginVertical="15dp"
+			android:fontFamily="Inter"
+			android:text="@string/general_settings_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="20.24sp"
+			android:textStyle="bold" />
+		<!--		<ImageView-->
+		<!--			android:id="@+id/vector"-->
+		<!--			android:layout_width="wrap_content"-->
+		<!--			android:layout_height="wrap_content"-->
+		<!--			android:contentDescription="vector"-->
+		<!--			android:src="@drawable/vector" />-->
+
+		<!--		<ImageView-->
+		<!--			android:id="@+id/vector_ek1"-->
+		<!--			android:layout_width="wrap_content"-->
+		<!--			android:layout_height="wrap_content"-->
+		<!--			android:contentDescription="vector_ek1"-->
+		<!--			android:src="@drawable/vector_ek1" />-->
+
+
+		<TextView
+			android:id="@+id/notification_sound"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/rectangle_3"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="4dp"
+			android:fontFamily="Inter"
+			android:text="@string/notification_sound_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="18.24sp"
+			android:textStyle="normal"
+			app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
+
+		<TextView
+			android:id="@+id/pebble"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/notification_sound"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="8dp"
+			android:fontFamily="Inter"
+			android:padding="5dp"
+			android:text="@string/pebble_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="16.24sp"
+			android:textStyle="italic"
+			app:layout_constraintTop_toBottomOf="@+id/notification_sound" />
+
+		<View
+			android:id="@+id/line_10"
+			android:layout_width="0dp"
+			android:layout_height="1dp"
+			android:layout_below="@+id/pebble"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentEnd="true"
+			android:layout_marginHorizontal="20dp"
+			android:layout_marginTop="3dp"
+			android:background="@drawable/line_10_shape"
+			app:layout_constraintTop_toBottomOf="@+id/pebble" />
+
+		<!--					<ImageView-->
+		<!--						android:id="@+id/vector_ek2"-->
+		<!--						android:layout_width="0dp"-->
+		<!--						android:layout_height="0dp"-->
+		<!--						android:contentDescription="vector_ek2"-->
+		<!--						android:src="@drawable/vector_ek2"-->
+		<!--						app:layout_constraintBottom_toBottomOf="@+id/rectangle_26"-->
+		<!--						app:layout_constraintEnd_toEndOf="@+id/rectangle_26"-->
+		<!--						app:layout_constraintStart_toStartOf="@+id/rectangle_26"-->
+		<!--						app:layout_constraintTop_toBottomOf="@+id/line_10" />-->
+
+		<TextView
+			android:id="@+id/notification_range"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/line_10"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="4dp"
+			android:fontFamily="Inter"
+			android:text="@string/notification_range_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="18.24sp"
+			android:textStyle="normal"
+			app:layout_constraintTop_toBottomOf="@+id/line_10" />
+
+		<TextView
+			android:id="@+id/__30_min"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/notification_range"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="8dp"
+			android:fontFamily="Inter"
+			android:text="@string/__30_min_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="16.24sp"
+			android:textStyle="italic"
+			app:layout_constraintTop_toBottomOf="@+id/notification_range" />
+
+		<View
+			android:id="@+id/line_10_ek1"
+			android:layout_width="0dp"
+			android:layout_height="1dp"
+			android:layout_below="@+id/__30_min"
+			android:layout_alignParentStart="true"
+			android:layout_alignParentEnd="true"
+			android:layout_marginHorizontal="20dp"
+			android:layout_marginTop="3dp"
+			android:background="@drawable/line_10_ek1_shape"
+			app:layout_constraintTop_toBottomOf="@+id/__30_min" />
+
+		<ImageView
+			android:id="@+id/vector_ek3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/__30_min"
+			android:layout_alignParentStart="true"
+			android:layout_marginStart="114dp"
+			android:layout_marginTop="1dp"
+			android:layout_marginEnd="10dp"
+			android:layout_toStartOf="@+id/notification_span"
+			android:contentDescription="vector_ek3"
+			android:src="@drawable/vector_ek3"
+			app:layout_constraintHorizontal_bias="0.55" />
+
+		<TextView
+			android:id="@+id/notification_span"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/__30_min"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="4dp"
+			android:fontFamily="Inter"
+			android:text="@string/notification_span_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="18.24sp"
+			android:textStyle="normal"
+			app:layout_constraintHorizontal_bias="0.515"
+			app:layout_constraintTop_toBottomOf="@+id/line_10_ek1" />
+
+		<TextView
+			android:id="@+id/_30_sec"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/__30_min"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="33dp"
+			android:fontFamily="Inter"
+			android:text="@string/_30_sec_string"
+			android:textColor="@color/rectangle_2_color"
+			android:textSize="16.24sp"
+			android:textStyle="italic"
+			app:layout_constraintHorizontal_bias="0.515"
+			app:layout_constraintTop_toBottomOf="@+id/notification_span" />
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout2"
+			android:layout_width="match_parent"
+			android:layout_height="38dp"
+			android:layout_below="@+id/_30_sec"
+			android:layout_marginTop="51dp"
+			app:layout_constraintTop_toBottomOf="@+id/_30_sec"
+			app:layout_constraintVertical_bias="0.797">
+
+			<Button
+				android:id="@+id/reset"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:layout_alignParentTop="true"
+				android:layout_centerHorizontal="true"
+				android:layout_centerVertical="true"
+				android:layout_marginTop="2dp"
+				android:background="@drawable/rectangle_26_shape"
+				android:fontFamily="Inter"
+				android:gravity="center"
+				android:paddingHorizontal="20dp"
+				android:paddingVertical="10dp"
+				android:text="@string/reset_string"
+				android:textColor="@color/rectangle_3_color"
+				android:textSize="16.24sp"
+				android:textStyle="bold" />
+
+			<!--			android:src="@drawable/rectangle_24" />-->
+		</RelativeLayout>
+	</RelativeLayout>
+	<!--	<ImageView-->
+	<!--		android:id="@+id/rectangle_24"-->
+	<!--		android:layout_width="match_parent"-->
+	<!--		android:layout_height="match_parent"-->
+	<!--		android:layout_alignParentStart="true"-->
+	<!--		android:layout_alignParentTop="true"-->
+	<!--		android:layout_alignParentEnd="true"-->
+	<!--		android:layout_marginHorizontal="20dp"-->
+	<!--		android:contentDescription="rectangle_24" />-->
+	<!--		<View-->
+	<!--			android:id="@+id/line_11"-->
+	<!--			android:layout_width="wrap_content"-->
+	<!--			android:layout_height="wrap_content"-->
+	<!--			android:background="@drawable/line_11_shape"-->
+	<!--			tools:layout_editor_absoluteX="-16dp"-->
+	<!--			tools:layout_editor_absoluteY="-172dp" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- landing_page strings -->
+
+    <string name="app_name">Ultimate Class</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="local_colors_string">Local colors</string>
+    <string name="get_started_string">Get started</string>
+    <string name="ultimate_class_string">Ultimate class</string>
+
+    <!--authentication page-->
+    <string name="ultimate_class_ek1_string">Ultimate Class</string>
+    <string name="submit_string">Submit</string>
+    <string name="login">Log in</string>
+    <string name="login_here">Log in Here</string>
+    <string name="john_okwaya_string">John Okwaya</string>
+    <string name="calendar_string">Calendar</string>
+    <string name="upload_details">Update personal info </string>
+    <string name="have_an_account__login_here_string">Have an account? Login here</string>
+
+    <!--  student_dashboard_general strings  -->
+    <string name="student_s_dashboard_string">Students dashboard</string>
+    <string name="kariuki_ian_string">Kariuki Ian</string>
+    <string name="scit_string">
+		<i>SCIT</i>
+	</string>
+    <string name="_2024_06_16_string">
+	<u>2024-06-16</u>
+	</string>
+    <string name="reset_string">Reset</string>
+    <string name="general_settings_string">General Settings</string>
+    <string name="notification_sound_string">Notification sound</string>
+    <string name="pebble_string">Pebble</string>
+    <string name="notification_range_string">Notification Range</string>
+    <string name="__30_min_string">-30 min</string>
+    <string name="notification_span_string">Notification Span</string>
+    <string name="_30_sec_string">30 sec</string>
+
+    <!--  general_dashboard__2 strings  -->
+    <string name="dashboard_string">Dashboard</string>
+    <string name="upcoming_notifications_string">Upcoming notifications</string>
+    <string name="by__emily_string">By: Emily</string>
+    <string name="web_design_and_development_string">Web design and development</string>
+    <string name="_09_00___11_00_string">09.00 - 11.00</string>
+    <string name="by__john_string">By: John</string>
+    <string name="web_design_and_development_ek1_string">Web design and development</string>
+    <string name="_07_00___09_00_string">07.00 - 09.00</string>
+    <string name="_06_00_string">06.00</string>
+    <string name="computer_technology_string">Computer Technology</string>
+
+    <string name="timetable_string">Timetable</string>
+    <string name="mon_string">MON</string>
+    <string name="tue_string">TUE</string>
+    <string name="thu_string">THU</string>
+    <string name="wed_string">WED</string>
+    <string name="fri_string">FRI</string>
+    <string name="registration_number">Registration Number</string>
+    <string name="department">Department</string>
+    <string name="today_s_schedule"><u>Today\'s Schedule</u></string>
+    <string name="backgroundimage">backgroundImage</string>
+    <string name="start_at__string">Start at:</string>
+    <string name="end_at__string">End at:</string>
+    <string name="confirm_schedule">Confirm Schedule</string>
+    <string name="lecturer_s_dashboard">Lecturer\'s dashboard</string>
+    <string name="unit_name">Unit name:</string>
+    <string name="course_name">Course name:</string>
+    <string name="ellipse_24">ellipse_24</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

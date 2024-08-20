@@ -1,0 +1,348 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--
+    /*
+     *	This content is generated from the API File Info.
+     *	(Alt+Shift+Ctrl+I).
+     *
+     *	@desc
+     *	@file 		schedule_settings
+     *	@date 		Wednesday 10th of July 2024 09:57:59 PM
+     *	@title 		Page 1
+     *	@author
+     *	@keywords
+     *	@generator 	Export Kit v1.3.figma
+     *
+     */
+    -->
+    <!--	<ScrollView android:id="@+id/schedule_settings" -->
+    <!--		android:layout_width="wrap_content" -->
+    <!--		android:layout_height="match_parent"-->
+    <!--		>-->
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/content_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+    <RelativeLayout
+        android:id="@+id/page_schedule_settings_ek1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
+
+
+            <View
+                android:id="@+id/rectangle_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/rectangle_2_shape" />
+
+            <View
+                android:id="@+id/bg_schedule_settings_ek2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:alpha="0.8"
+                android:background="#FFFFFF" />
+
+
+            <ImageView
+                android:id="@+id/ellipse_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="200dp"
+                android:contentDescription="@string/ellipse_24"
+                android:src="@drawable/ellipse_24_ek1" />
+
+
+            <RelativeLayout
+                android:id="@+id/group_28"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:paddingBottom="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/rectangle_1_shape">
+
+                <TextView
+                    android:id="@+id/lecturer_s_dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="20dp"
+                    android:layout_toEndOf="@+id/icon"
+                    android:fontFamily="Inter"
+                    android:layout_centerVertical="true"
+                    android:text="@string/lecturer_s_dashboard"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/icon"
+                    android:layout_width="18dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="19dp"
+                    android:contentDescription="icon"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon" />
+
+            </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/group_28"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:paddingBottom="30dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/lecturer_dashboard_containers">
+
+                <RelativeLayout
+                    android:id="@+id/rectangle_27"
+                    android:layout_width="match_parent"
+                    android:layout_height="87dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/rectangle_27_shape">
+                    <ImageView
+                        android:id="@+id/unsplash"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_alignParentBottom="true"
+                        android:contentDescription="unsplash_b4tjxni0y2c_ek1"
+                        android:src="@drawable/unsplash_b4tjxni0y2c_ek1" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/unsplash"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/john_okwaya"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:fontFamily="Inter"
+                            android:text="@string/john_okwaya_string"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/scit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="Inter"
+                            android:text="@string/scit_string"
+                            android:textColor="#FFFFFF"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/_2024_06_16"
+                        android:layout_width="110dp"
+                        android:layout_height="27dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="15dp"
+                        android:fontFamily="Inter"
+                        android:text="@string/_2024_06_16_string"
+                        android:textColor="#FFFFFF"
+                        android:layout_centerVertical="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rectangle_27"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/lecturer_dashboard_containers">
+
+            <TextView
+                android:id="@+id/todays_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/schedule_background"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/today_s_schedule"
+                android:textAlignment="center"
+                android:textColor="#0964AE"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/group_72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/todays_schedule"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/start_at_"
+                    android:layout_width="150dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:fontFamily="Inter"
+                    android:text="@string/start_at__string"
+                    android:textColor="@color/rectangle_2_color"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/startTime"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/end_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/group_72"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/end_at_"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:fontFamily="Inter"
+                    android:text="@string/end_at__string"
+                    android:textColor="@color/rectangle_2_color"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/endtime"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/end_at"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/course_name_"
+                    android:layout_width="150dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="8dp"
+                    android:fontFamily="Inter"
+                    android:text="@string/course_name"
+                    android:textColor="@color/rectangle_2_color"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/edit_course"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/course"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/unit_text"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="8dp"
+                    android:fontFamily="Inter"
+                    android:text="@string/unit_name"
+                    android:textColor="@color/rectangle_2_color"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/unit_name"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:layout_margin="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/rectangle_3_ek1"
+                android:background="@drawable/action_btn"
+                android:layout_centerHorizontal="true"
+                android:text="@string/confirm_schedule"
+                android:textColor="#042948"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
