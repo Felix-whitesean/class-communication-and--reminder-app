@@ -529,7 +529,7 @@
 				</RelativeLayout>
 
 				<EditText
-					android:id="@+id/emailInput"
+					android:id="@+id/Email"
 					android:layout_width="match_parent"
 					android:layout_height="45.86dp"
 					android:layout_marginStart="30dp"
