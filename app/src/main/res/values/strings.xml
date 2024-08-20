@@ -54,7 +54,7 @@
     <string name="thu_string">THU</string>
     <string name="wed_string">WED</string>
     <string name="fri_string">FRI</string>
-    <string name="registration_number">Registration Number</string>
+    <string name="registration_number">Reg No/ Staff Id</string>
     <string name="department">Department</string>
     <string name="today_s_schedule"><u>Today\'s Schedule</u></string>
     <string name="backgroundimage">backgroundImage</string>

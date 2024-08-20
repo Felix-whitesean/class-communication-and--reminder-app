@@ -9,10 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
-//    public void onStart(Bundle savedInstanceState){
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.user_info);
-//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("acknowledgment","Getting started button clicked");
+                Log.d("acknowledgment","Button clicked");
                 // Navigate to authentication_page_activity
                 Intent intent = new Intent(MainActivity.this, userInfoActivity.class);
                 startActivity(intent);
