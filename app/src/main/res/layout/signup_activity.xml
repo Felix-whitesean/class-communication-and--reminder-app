@@ -537,7 +537,7 @@
                     android:shadowDx="1"
                     android:shadowDy="1"
                     android:shadowRadius="1"
-                    android:text="Sign Up Here"
+                    android:text="@string/sign_up_here"
                     android:background="@drawable/rectangle_27_shape_ek1"
                     android:textColor="@color/_bg__authentication_ek2_color"
                     android:textSize="20sp"
