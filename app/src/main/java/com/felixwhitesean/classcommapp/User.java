@@ -1,14 +1,14 @@
 package com.felixwhitesean.classcommapp;
 
 public class User {
-    private String username, email, phoneNumber, registrationNumber, courseName, department;
+    private String username, email, phoneNumber, registrationNumber, courseName, department, id;
 
 
     public User() {
         // Default constructor required for Firestore
     }
 
-    public User(String username, String email, String department, String courseName, String registrationNumber, String phoneNumber) {
+    public User(String username, String email, String department, String courseName, String registrationNumber, String phoneNumber, String id) {
         this.username = username;
         this.email = email;
         this.department = department;
@@ -65,6 +65,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 

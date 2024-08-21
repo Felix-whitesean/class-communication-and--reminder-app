@@ -25,8 +25,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class userInfoActivity extends Activity {
 	//Declaration of variables
@@ -35,6 +37,7 @@ public class userInfoActivity extends Activity {
 	Button signupButton;
 	FirebaseFirestore database;
 	private FirebaseAuth mAuth;
+	String randomId = UUID.randomUUID().toString();
 	private CollectionReference usersCollection;
 
 	@Override
@@ -86,48 +89,54 @@ public class userInfoActivity extends Activity {
 					Toast.makeText(userInfoActivity.this, "Input all the required details", Toast.LENGTH_SHORT).show();
 					readData();
 					return;
+
+					// TODO: Verification of use input e.g. checking for particular patterns;
 				}
 				else{
+					String id =  GenerateRandomId();
 					Map<String, Object> user = new HashMap<>();
-					user.put("first", "Ada");
-					user.put("last", "Lovelace");
-					user.put("born", 1815);
-//					if(confirm == password) {
+					user.put("username", username);
+					user.put("registration_number", registrationNo);
+					user.put("email", email);
+					user.put("course", courseName);
+					user.put("department", departmentName);
+					user.put("phone_number", phoneNo);
 
-//					User user = new User(username, email);
-//					usersCollection.document("userID").set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//						@Override
-//						public void onSuccess(Void aVoid) {
-//							// User successfully added to Firestore
-//							Log.d("successmessage", "User added successfull");
-//						}
-//					}).addOnFailureListener(new OnFailureListener() {
-//						@Override
-//						public void onFailure(@NonNull Exception e) {
-//							// Handle any errors
-//							Log.d("errormessage", "Signup not successfull");
-//						}
-//					});
-
-//					}
-//					else{
-//						signupConfirmPassword.requestFocus();
-						Toast.makeText(userInfoActivity.this, "Snap! Confirm password", Toast.LENGTH_SHORT).show();
-						readData();
-//					}
+//					User user = new User(username, email, departmentName, courseName, registrationNo, phoneNo);
+					usersCollection.document(id).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+						@Override
+						public void onSuccess(Void aVoid) {
+							// User successfully added to Firestore
+							Toast.makeText(userInfoActivity.this, "Successfully added the user: "+username, Toast.LENGTH_SHORT).show();
+							Log.d("successmessage", "User added successfull");
+							finish();
+						}
+					}).addOnFailureListener(new OnFailureListener() {
+						@Override
+						public void onFailure(@NonNull Exception e) {
+							// Handle any errors
+							Log.d("errormessage", "Signup not successfull");
+						}
+					});
 				}
 			}
 		});
 	}
 	public void readData(){
 		FirebaseFirestore db = FirebaseFirestore.getInstance();
-		db.collection("class comm app")
+		db.collection("users")
 				.get()
 				.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 					@Override
 					public void onComplete(@NonNull Task<QuerySnapshot> task) {
 						if (task.isSuccessful()) {
 							for (QueryDocumentSnapshot document : task.getResult()) {
+								ArrayList<User> arrayList = new ArrayList<>();
+								for(QueryDocumentSnapshot doc: task.getResult()) {
+									User user = doc.toObject(User.class);
+//									user.setId(doc.getId());
+									arrayList.add(user);
+								}
 								Log.d(TAG, document.getId() + " => " + document.getData());
 							}
 						} else {
@@ -135,6 +144,10 @@ public class userInfoActivity extends Activity {
 						}
 					}
 				});
+	}
+	public String GenerateRandomId (){
+			randomId = randomId.replace("-", "");
+			return randomId;
 	}
 }
 	

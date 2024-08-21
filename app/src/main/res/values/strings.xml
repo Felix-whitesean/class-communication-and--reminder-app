@@ -54,7 +54,7 @@
     <string name="thu_string">THU</string>
     <string name="wed_string">WED</string>
     <string name="fri_string">FRI</string>
-    <string name="registration_number">Registration Number</string>
+    <string name="registration_number">Reg No/ Staff Id</string>
     <string name="department">Department</string>
     <string name="today_s_schedule"><u>Today\'s Schedule</u></string>
     <string name="backgroundimage">backgroundImage</string>
@@ -67,4 +67,5 @@
     <string name="ellipse_24">ellipse_24</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up_here">Sign Up Here</string>
 </resources>
