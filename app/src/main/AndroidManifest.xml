@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.felixwhitesean.classcommapp" >
 
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<application
+
 		android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:allowBackup="true"
@@ -74,6 +76,7 @@
 			android:label="Test page"
 			android:exported="true">
 		</activity>
+		<receiver android:name=".AlarmReceiver" />
 	</application>
 
 </manifest>

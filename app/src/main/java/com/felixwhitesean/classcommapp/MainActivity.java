@@ -1,5 +1,8 @@
 package com.felixwhitesean.classcommapp;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,12 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+import java.util.Calendar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-
-import java.io.FileInputStream;
 
 public class MainActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "UserLoginPrefs";
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setAlarm();
                 Log.d("acknowledgment","Getting started button clicked");
 //                // Navigate to authentication_page_activity
                 if (isLoggedIn) {
@@ -59,5 +60,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+    }
+    private void setAlarm() {
+        // Set the alarm to start 30 seconds from now
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.SECOND, 30); // Set the alarm to trigger after 30 seconds
+
+        // Create an intent to the BroadcastReceiver
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+        // Set the alarm
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+
+
+        Log.d("Alarm", "Alarm set for 30 seconds from now.");
     }
 }
