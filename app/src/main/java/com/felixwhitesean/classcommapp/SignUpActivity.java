@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     private Button btn, Register;
     private EditText email, Password;
+    private TextView redirect;
     private static final String PREFS_NAME = "UserLoginPrefs";
     private static final String IS_LOGGED_IN = "IsLoggedIn";
 
@@ -41,10 +43,10 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.signup_activity);
 
         mAuth = FirebaseAuth.getInstance();
-        btn = findViewById(R.id.Button);
         Register = findViewById(R.id.signupBtn);
         email = findViewById(R.id.Email);
         Password = findViewById(R.id.Passwrd);
+        redirect = findViewById(R.id.login_here_redirect);
 
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
                             editor.apply();
 
                             Toast.makeText(SignUpActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -85,6 +87,13 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+        redirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -377,25 +377,13 @@
 			android:layout_marginStart="18dp"
 			android:layout_marginLeft="86dp"
 			android:layout_marginTop="30dp"
+			android:layout_centerHorizontal="true"
 			android:layout_marginBottom="24dp"
-			android:layout_toEndOf="@id/btn"
 			android:fontFamily="Inter"
 			android:text="@string/ultimate_class_ek1_string"
 			android:textColor="@color/_bg__authentication_ek2_color"
 			android:textSize="24sp" />
 
-		<Button
-			android:id="@+id/btn"
-			android:layout_width="35dp"
-			android:layout_height="wrap_content"
-			android:layout_alignStart="@+id/rectangle_1_ek1"
-			android:layout_alignTop="@+id/rectangle_1_ek1"
-			android:layout_alignBottom="@+id/rectangle_1_ek1"
-			android:layout_marginStart="20dp"
-			android:layout_marginTop="35dp"
-			android:layout_marginBottom="35dp"
-			android:background="@drawable/icon"
-			android:contentDescription="icon_ek1" />
 
 		<RelativeLayout
 			android:id="@+id/group_27"
@@ -426,7 +414,7 @@
 			<RelativeLayout
 				android:id="@+id/group_19"
 				android:layout_width="wrap_content"
-				android:layout_height="49dp"
+				android:layout_height="wrap_content"
 				android:layout_below="@+id/group_62"
 				android:layout_alignStart="@+id/rectangle_6_ek1"
 				android:layout_alignEnd="@+id/rectangle_6_ek1"
@@ -448,6 +436,19 @@
 					android:text="@string/login"
 					android:textAllCaps="false"
 					android:textColor="@color/white"
+					android:textSize="20sp" />
+				<TextView
+					android:id="@+id/signup_here_redirect"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/loginbtn"
+					android:layout_centerHorizontal="true"
+					android:layout_marginStart="10dp"
+					android:layout_marginTop="54dp"
+					android:fontFamily="Inter"
+					android:linksClickable="true"
+					android:text="@string/create_new_account"
+					android:textColor="@color/ellipse_14_color"
 					android:textSize="20sp" />
 
 			</RelativeLayout>

@@ -56,7 +56,8 @@
                 android:textStyle="italic"
                 android:textColor="#042948"
                 android:textSize="16sp"
-                android:layout_below="@id/course_name_1"/>
+                android:layout_below="@id/course_name_1"
+                />
         </RelativeLayout>
     </LinearLayout>
 

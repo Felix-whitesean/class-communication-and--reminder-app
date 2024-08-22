@@ -22,24 +22,26 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends Activity {
     FirebaseAuth mAuth;
-    private TextView Ultimate;
+    FirebaseUser currentUser;
+    private TextView Ultimate, signUpRedirect;
     private Button Login ;
     private EditText email,Password;
 
-    private static final String PREFS_NAME = "UserLoginPrefs";
-    private static final String IS_LOGGED_IN = "IsLoggedIn";
+    public static final String PREFS_NAME = "UserLoginPrefs";
+    public static final String IS_LOGGED_IN = "IsLoggedIn";
+    public static final String CURRENT_USER_ID = "CurrentUserId";
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-//            startActivity(intent);
-//            finish(); // Close LoginActivity after redirecting
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(getApplicationContext(),GeneralDashboard.class);
+            startActivity(intent);
+            finish(); // Close LoginActivity after redirecting
+        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class LoginActivity extends Activity {
         Login= findViewById(R.id.loginbtn);
         email= findViewById(R.id.Email);
         Password= findViewById(R.id.password);
+        signUpRedirect = findViewById(R.id.signup_here_redirect);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +73,20 @@ public class LoginActivity extends Activity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                        // Save login state
+                                    // Save login state
+                                    currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                                    if(currentUser != null) {
+                                        String userUID = currentUser.getUid();
+                                        Toast.makeText(LoginActivity.this, userUID, Toast.LENGTH_SHORT).show();
                                         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                                         SharedPreferences.Editor editor = prefs.edit();
                                         editor.putBoolean(IS_LOGGED_IN, true);
+                                        editor.putString(CURRENT_USER_ID, userUID);
                                         editor.apply();
-
+                                    }
                                     Toast.makeText(LoginActivity.this, "Login Successful.",
                                             Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), ScheduleSettings.class);
+                                    Intent intent = new Intent(getApplicationContext(), GeneralDashboard.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
@@ -91,11 +99,14 @@ public class LoginActivity extends Activity {
                             }
                         });
 
-
-
-
             }
         });
-
+        signUpRedirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

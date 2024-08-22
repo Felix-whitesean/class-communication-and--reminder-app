@@ -40,6 +40,13 @@
 			android:exported="true">
 		</activity>
 		<activity
+			android:name=".Menu"
+			android:theme="@style/Theme.App.Transparent"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="Sign Up"
+			android:exported="true">
+		</activity>
+		<activity
 			android:name=".LecturerDashboardActivity"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="Sign Up"
@@ -64,7 +71,7 @@
 			android:exported="true">
 		</activity>
 		<activity
-			android:name=".general_dashboard__2_activity"
+			android:name=".NotificationsActivity"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="Test page"
 			android:exported="true">
@@ -76,7 +83,7 @@
 			android:exported="true">
 		</activity>
 		<activity
-			android:name=".android_large___3_activity"
+			android:name=".Timetable"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="Test page"
 			android:exported="true">

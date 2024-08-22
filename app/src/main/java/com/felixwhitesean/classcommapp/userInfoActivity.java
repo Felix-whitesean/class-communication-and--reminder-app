@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,6 +33,7 @@ import java.util.UUID;
 
 public class userInfoActivity extends Activity {
 	//Declaration of variables
+	FirebaseUser currentUser;
 	EditText signupName, signupUsername, signupEmail, course, registrationNumber, department, phoneNumber;
 	TextView loginRedirectText;
 	Button signupButton;
@@ -55,72 +57,77 @@ public class userInfoActivity extends Activity {
 		course = (EditText) findViewById(R.id.course);
 		department = (EditText) findViewById(R.id.department_name);
 		phoneNumber = (EditText) findViewById(R.id.phone_number);
+		currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-		//custom code goes here
-		signupButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				database = FirebaseFirestore.getInstance();
+		if (currentUser != null) {
+			String userUID = currentUser.getUid();  // Get user UID
+			String userEmail = currentUser.getEmail();  // Get user email
+			String userName = currentUser.getDisplayName();  // Get display name, if available
+
+			signupEmail.setText(userEmail);
+			signupUsername.setText(userName);
+			//custom code goes here
+			signupButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					database = FirebaseFirestore.getInstance();
 //				reference = database.getReference("users");
-				usersCollection = database.collection("users");
-				String email = signupEmail.getText().toString();
-				String username = signupUsername.getText().toString();
-				String registrationNo = registrationNumber.getText().toString();
-				String courseName = course.getText().toString();
-				String departmentName = department.getText().toString();
-				String phoneNo = phoneNumber.getText().toString();
-				if(email.isEmpty() || username.isEmpty() || registrationNo.isEmpty() || courseName.isEmpty() || departmentName.isEmpty() || phoneNo.isEmpty()) {
-					if (username.isEmpty()) {
-						signupUsername.requestFocus();
-					} else if(email.isEmpty()){
-						signupEmail.requestFocus();
-					} else if(registrationNo.isEmpty()){
-						registrationNumber.requestFocus();
-					}
-					else if(courseName.isEmpty()){
-						registrationNumber.requestFocus();
-					}
-					else if(departmentName.isEmpty()){
-						department.requestFocus();
-					}
-					else {
-						phoneNumber.requestFocus();
-					}
-					Toast.makeText(userInfoActivity.this, "Input all the required details", Toast.LENGTH_SHORT).show();
-					readData();
-					return;
+					usersCollection = database.collection("users");
+					String email = signupEmail.getText().toString();
+					String username = signupUsername.getText().toString();
+					String registrationNo = registrationNumber.getText().toString();
+					String courseName = course.getText().toString();
+					String departmentName = department.getText().toString();
+					String phoneNo = phoneNumber.getText().toString();
+					if (email.isEmpty() || username.isEmpty() || registrationNo.isEmpty() || courseName.isEmpty() || departmentName.isEmpty() || phoneNo.isEmpty()) {
+						if (username.isEmpty()) {
+							signupUsername.requestFocus();
+						} else if (email.isEmpty()) {
+							signupEmail.requestFocus();
+						} else if (registrationNo.isEmpty()) {
+							registrationNumber.requestFocus();
+						} else if (courseName.isEmpty()) {
+							registrationNumber.requestFocus();
+						} else if (departmentName.isEmpty()) {
+							department.requestFocus();
+						} else {
+							phoneNumber.requestFocus();
+						}
+						Toast.makeText(userInfoActivity.this, "Input all the required details", Toast.LENGTH_SHORT).show();
+						readData();
+						return;
 
-					// TODO: Verification of use input e.g. checking for particular patterns;
-				}
-				else{
-					String id =  GenerateRandomId();
-					Map<String, Object> user = new HashMap<>();
-					user.put("username", username);
-					user.put("registration_number", registrationNo);
-					user.put("email", email);
-					user.put("course", courseName);
-					user.put("department", departmentName);
-					user.put("phone_number", phoneNo);
+						// TODO: Verification of use input e.g. checking for particular patterns;
+					} else {
+						String id = GenerateRandomId();
+						Map<String, Object> user = new HashMap<>();
+						user.put("username", username);
+						user.put("registration_number", registrationNo);
+						user.put("email", email);
+						user.put("course", courseName);
+						user.put("department", departmentName);
+						user.put("phone_number", phoneNo);
 
 //					User user = new User(username, email, departmentName, courseName, registrationNo, phoneNo);
-					usersCollection.document(id).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-						@Override
-						public void onSuccess(Void aVoid) {
-							// User successfully added to Firestore
-							Toast.makeText(userInfoActivity.this, "Successfully added the user: "+username, Toast.LENGTH_SHORT).show();
-							Log.d("successmessage", "User added successfull");
-							finish();
-						}
-					}).addOnFailureListener(new OnFailureListener() {
-						@Override
-						public void onFailure(@NonNull Exception e) {
-							// Handle any errors
-							Log.d("errormessage", "Signup not successfull");
-						}
-					});
+						usersCollection.document(userUID).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+							@Override
+							public void onSuccess(Void aVoid) {
+								// User successfully added to Firestore
+								Toast.makeText(userInfoActivity.this, "Successfully added the user: " + username, Toast.LENGTH_SHORT).show();
+								Log.d("successmessage", "User added successfull");
+								finish();
+							}
+						}).addOnFailureListener(new OnFailureListener() {
+							@Override
+							public void onFailure(@NonNull Exception e) {
+								// Handle any errors
+								Log.d("errormessage", "Signup not successfull");
+							}
+						});
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 	public void readData(){
 		FirebaseFirestore db = FirebaseFirestore.getInstance();

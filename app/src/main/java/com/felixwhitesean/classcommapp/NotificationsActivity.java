@@ -23,11 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class general_dashboard__2_activity extends Activity {
+public class NotificationsActivity extends Activity {
 	private TextView dateTextView;
 	private Handler handler = new Handler();
 
@@ -35,7 +31,7 @@ public class general_dashboard__2_activity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.general_dashboard__2);
+		setContentView(R.layout.general_dashboard);
 
 		dateTextView = findViewById(R.id.editTextDate2); // Assuming your TextView has this ID
 		handler.post(runnable);

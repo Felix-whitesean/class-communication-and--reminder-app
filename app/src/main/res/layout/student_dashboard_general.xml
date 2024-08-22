@@ -118,7 +118,7 @@
 		android:id="@+id/icon"
 		android:layout_width="32dp"
 		android:layout_height="26dp"
-		android:layout_marginLeft="35dp"
+		android:layout_marginStart="35dp"
 		android:background="@drawable/icon"
 		android:contentDescription="icon"
 		app:layout_constraintBottom_toBottomOf="@+id/rectangle_1"

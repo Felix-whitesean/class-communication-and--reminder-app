@@ -1,7 +1,10 @@
 package com.felixwhitesean.classcommapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class android_large___3_activity extends Activity {
+public class Timetable extends Activity {
 	private RecyclerView recyclerView,recyclerView2;
 	private TimectableAdapter adapter;
 	private UnitsAdapter adapter2;
@@ -50,7 +53,16 @@ public class android_large___3_activity extends Activity {
 
 		adapter.setModelClassesRows(lessons);
 		adapter2.setUnits(unitDetails);
+		Button menuBtn = findViewById(R.id.icon);
+		menuBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(Timetable.this, Menu.class);
+				startActivity(intent);
+			}
+		});
 	}
+
 }
 	
 	
