@@ -61,10 +61,6 @@ public class GeneralDashboard extends AppCompatActivity {
                             String department = document.getString("department");
                             String courseDetails = course+" ("+department+")";
                             coursename.setText(courseDetails);
-//                            Toast.makeText(GeneralDashboard.this, "Username: " + username, Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(GeneralDashboard.this, "Email: " + email, Toast.LENGTH_SHORT).show();
-//                            Log.d("Firebase", "User Name: " + username);
-//                            Log.d("Firebase", "User Email: " + email);
                         } else {
                             Toast.makeText(GeneralDashboard.this, "No such document", Toast.LENGTH_SHORT).show();
                             Log.d("Firebase", "No such document");

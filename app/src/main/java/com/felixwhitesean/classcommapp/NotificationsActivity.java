@@ -33,10 +33,8 @@ public class NotificationsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.general_dashboard);
 
-		dateTextView = findViewById(R.id.editTextDate2); // Assuming your TextView has this ID
+		dateTextView = findViewById(R.id.editTextDate2);
 		handler.post(runnable);
-		//custom code goes here
-	
 	}
 	private Runnable runnable = new Runnable() {
 		@Override

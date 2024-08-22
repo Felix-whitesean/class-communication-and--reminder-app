@@ -27,7 +27,7 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/session2"
-                android:textColor="#FFFFFF"
+                android:textColor="#09ED13"
                 android:textSize="16dp"
                 android:layout_marginLeft="4dp"
                 android:padding="3dp"
@@ -46,7 +46,7 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/session3"
-                android:textColor="#FFFFFF"
+                android:textColor="#08FDD1"
                 android:padding="3dp"
                 android:textSize="16dp"
                 android:layout_width="80dp"
@@ -64,7 +64,7 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/session4"
-                android:textColor="#FFFFFF"
+                android:textColor="#F9C719"
                 android:padding="3dp"
                 android:textSize="16dp"
                 android:layout_width="80dp"
@@ -101,7 +101,7 @@
                 android:orientation="vertical">
             <TextView
                 android:id="@+id/session6"
-                android:textColor="#FFFFFF"
+                android:textColor="#FF6C01"
                 android:layout_marginLeft="4dp"
                 android:padding="3dp"
                 android:textSize="16dp"

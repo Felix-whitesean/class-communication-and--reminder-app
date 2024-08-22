@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -19,8 +20,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,13 +38,15 @@ import java.util.UUID;
 public class userInfoActivity extends Activity {
 	//Declaration of variables
 	FirebaseUser currentUser;
-	EditText signupName, signupUsername, signupEmail, course, registrationNumber, department, phoneNumber;
-	TextView loginRedirectText;
+	EditText signupName, signupUsername, course, registrationNumber, department, phoneNumber;
+	TextView loginRedirectText, signupEmail;
 	Button signupButton;
 	FirebaseFirestore database;
 	private FirebaseAuth mAuth;
 	String randomId = UUID.randomUUID().toString();
 	private CollectionReference usersCollection;
+	Spinner spinner;
+	String userCategory;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,23 +55,24 @@ public class userInfoActivity extends Activity {
 		setContentView(R.layout.user_info);
 
 		//Initializing form elements
-		FirebaseApp.initializeApp(this);
 		signupButton = (Button) findViewById(R.id.signupBtn);
 		signupUsername = (EditText) findViewById(R.id.username);
-		signupEmail = (EditText) findViewById(R.id.emailInput);
+		signupEmail = (TextView) findViewById(R.id.emailInput);
 		registrationNumber = (EditText) findViewById(R.id.registration_number);
 		course = (EditText) findViewById(R.id.course);
 		department = (EditText) findViewById(R.id.department_name);
 		phoneNumber = (EditText) findViewById(R.id.phone_number);
+
+		// Initializing other items
+		FirebaseApp.initializeApp(this);
 		currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 		if (currentUser != null) {
 			String userUID = currentUser.getUid();  // Get user UID
 			String userEmail = currentUser.getEmail();  // Get user email
-			String userName = currentUser.getDisplayName();  // Get display name, if available
 
 			signupEmail.setText(userEmail);
-			signupUsername.setText(userName);
+			checkCategory();
 			//custom code goes here
 			signupButton.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -79,6 +86,7 @@ public class userInfoActivity extends Activity {
 					String courseName = course.getText().toString();
 					String departmentName = department.getText().toString();
 					String phoneNo = phoneNumber.getText().toString();
+					String finalUserCategory = checkCategory();
 					if (email.isEmpty() || username.isEmpty() || registrationNo.isEmpty() || courseName.isEmpty() || departmentName.isEmpty() || phoneNo.isEmpty()) {
 						if (username.isEmpty()) {
 							signupUsername.requestFocus();
@@ -95,11 +103,11 @@ public class userInfoActivity extends Activity {
 						}
 						Toast.makeText(userInfoActivity.this, "Input all the required details", Toast.LENGTH_SHORT).show();
 						readData();
+
 						return;
 
 						// TODO: Verification of use input e.g. checking for particular patterns;
 					} else {
-						String id = GenerateRandomId();
 						Map<String, Object> user = new HashMap<>();
 						user.put("username", username);
 						user.put("registration_number", registrationNo);
@@ -107,6 +115,7 @@ public class userInfoActivity extends Activity {
 						user.put("course", courseName);
 						user.put("department", departmentName);
 						user.put("phone_number", phoneNo);
+						user.put("user_category", finalUserCategory);
 
 //					User user = new User(username, email, departmentName, courseName, registrationNo, phoneNo);
 						usersCollection.document(userUID).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -121,6 +130,7 @@ public class userInfoActivity extends Activity {
 							@Override
 							public void onFailure(@NonNull Exception e) {
 								// Handle any errors
+								Toast.makeText(userInfoActivity.this, "Error in adding new user " + username, Toast.LENGTH_SHORT).show();
 								Log.d("errormessage", "Signup not successfull");
 							}
 						});
@@ -131,8 +141,7 @@ public class userInfoActivity extends Activity {
 	}
 	public void readData(){
 		FirebaseFirestore db = FirebaseFirestore.getInstance();
-		db.collection("users")
-				.get()
+		db.collection("users").get()
 				.addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 					@Override
 					public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -141,7 +150,6 @@ public class userInfoActivity extends Activity {
 								ArrayList<User> arrayList = new ArrayList<>();
 								for(QueryDocumentSnapshot doc: task.getResult()) {
 									User user = doc.toObject(User.class);
-//									user.setId(doc.getId());
 									arrayList.add(user);
 								}
 								Log.d(TAG, document.getId() + " => " + document.getData());
@@ -152,9 +160,28 @@ public class userInfoActivity extends Activity {
 					}
 				});
 	}
-	public String GenerateRandomId (){
-			randomId = randomId.replace("-", "");
-			return randomId;
+//	public String GenerateRandomId (){
+//			randomId = randomId.replace("-", "");
+//			return randomId;
+//	}
+	public String checkCategory(){
+		spinner = findViewById(R.id.user_category);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.user_category, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				// Show a toast message when an item is selected
+				userCategory = parentView.getItemAtPosition(position).toString();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				userCategory = "Student";
+			}
+		});
+		return userCategory;
 	}
 }
 	

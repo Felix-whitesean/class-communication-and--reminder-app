@@ -370,24 +370,6 @@
 
 
 
-		<!--		<RelativeLayout-->
-		<!--			android:id="@+id/homeindicator"-->
-		<!--			android:layout_width="wrap_content"-->
-		<!--			android:layout_height="wrap_content"-->
-		<!--			android:layout_marginStart="23dp"-->
-		<!--			android:layout_marginTop="766dp">-->
-
-		<!--			<View-->
-		<!--				android:id="@+id/home_indicator"-->
-		<!--				android:layout_width="134dp"-->
-		<!--				android:layout_height="5dp"-->
-		<!--				android:layout_marginStart="95dp"-->
-		<!--				android:layout_marginTop="21dp"-->
-		<!--				android:background="@drawable/home_indicator_shape" />-->
-
-		<!--		</RelativeLayout>-->
-
-
 		<TextView
 			android:id="@+id/ultimate_class_ek1"
 			android:layout_width="215dp"
@@ -440,7 +422,7 @@
 				android:id="@+id/group_19"
 				android:layout_width="wrap_content"
 				android:layout_height="49dp"
-				android:layout_below="@+id/group_63"
+				android:layout_below="@+id/spinner"
 				android:layout_centerHorizontal="true"
 				android:layout_marginStart="15dp"
 				android:layout_marginTop="34dp"
@@ -695,18 +677,20 @@
 
 				</RelativeLayout>
 
-				<EditText
+				<TextView
 					android:id="@+id/emailInput"
 					android:layout_width="match_parent"
 					android:layout_height="45.86dp"
 					android:layout_marginStart="30dp"
 					android:layout_marginTop="0dp"
-					android:layout_marginRight="10dp"
+					android:layout_marginEnd="10dp"
 					android:alpha="0.7"
-					android:background="@drawable/rectangle_8_shape"
-					android:hint="Email"
-					android:inputType="text|textEmailAddress|textAutoComplete"
-					android:padding="6dp" />
+					android:layout_centerVertical="true"
+					android:textSize="20sp"
+					android:paddingTop="9dp"
+					android:textAlignment="center"
+					android:textColor="#FF042948"
+					android:background="@drawable/rectangle_8_shape" />
 
 			</RelativeLayout>
 
@@ -819,10 +803,10 @@
 				<EditText
 					android:id="@+id/department_name"
 					android:layout_width="match_parent"
-					android:layout_height="45.86dp"
+					android:layout_height="46dp"
 					android:layout_marginStart="30dp"
 					android:layout_marginTop="0dp"
-					android:layout_marginRight="10dp"
+					android:layout_marginEnd="10dp"
 					android:alpha="0.7"
 					android:background="@drawable/rectangle_9_ek2_shape"
 					android:hint="@string/department"
@@ -831,6 +815,29 @@
 
 			</RelativeLayout>
 
+			<RelativeLayout
+				android:id="@+id/spinner"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/group_63"
+				android:layout_marginStart="14dp"
+				android:layout_marginEnd="10dp"
+				android:alpha="0.7"
+				android:background="@drawable/rectangle_9_ek2_shape"
+				android:layout_marginTop="31dp">
+				<View
+					android:id="@+id/spinnerView"
+					android:layout_width="30dp"
+					android:layout_height="46dp"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:background="@drawable/rectangle_27_shape_ek1" />
+				<Spinner
+					android:id="@+id/user_category"
+					android:layout_toEndOf="@id/spinnerView"
+					android:layout_width="match_parent"
+					android:layout_height="46dp" />
+			</RelativeLayout>
 			<RelativeLayout
 				android:id="@+id/group_57"
 				android:layout_width="match_parent"
@@ -847,7 +854,7 @@
 					android:layout_alignParentStart="true"
 					android:layout_alignParentTop="true"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginLeft="0dp"
+					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
 					android:fontFamily="Inter"
 					android:gravity="center"

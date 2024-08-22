@@ -1,33 +1,99 @@
 package com.felixwhitesean.classcommapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Timetable extends Activity {
 	private RecyclerView recyclerView,recyclerView2;
 	private TimectableAdapter adapter;
 	private UnitsAdapter adapter2;
+	private TextView dateTextView, coursename;
+	private Handler handler = new Handler();
+	FirebaseFirestore db;
+	String userUID;
+	SharedPreferences sharedPref;
+	private static final String PREFS_NAME = "UserLoginPrefs";
+	private static final String CURRENT_USER_ID = "CurrentUserId";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.android_large___3);
+		setContentView(R.layout.timetable);
 		//custom code goes here
 		recyclerView = findViewById(R.id.recyclerview);
 		recyclerView2 = findViewById(R.id.recyclerview2);
+		dateTextView = findViewById(R.id.date); // Assuming your TextView has this ID
+		handler.post(runnable);
+
+		sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		userUID = sharedPref.getString(CURRENT_USER_ID, null);
+		db = FirebaseFirestore.getInstance();
+		coursename = findViewById(R.id.computer_technology);
+
+		DocumentReference docRef = db.collection("users").document(userUID);
+
+		if(userUID != null) {
+			docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+				@Override
+				public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+					if (task.isSuccessful()) {
+						DocumentSnapshot document = task.getResult();
+						if (document.exists()) {
+							// Document data successfully retrieved
+							String course = document.getString("course");
+							String department = document.getString("department");
+							String courseDetails = course+" ("+department+")";
+							coursename.setText(courseDetails);
+						} else {
+							Toast.makeText(Timetable.this, "No such document", Toast.LENGTH_SHORT).show();
+							Log.d("Firebase", "No such document");
+						}
+					} else {
+						Toast.makeText(Timetable.this, "get failed with "+task.getException(), Toast.LENGTH_SHORT).show();
+						Log.d("Firebase", "get failed with ", task.getException());
+					}
+				}
+			});
+		}
+		else{
+			Toast.makeText(this, "No user details found", Toast.LENGTH_SHORT).show();
+			Intent toHome = new Intent(Timetable.this, userInfoActivity.class);
+			startActivity(toHome);
+			finish();
+		}
+
 		adapter = new TimectableAdapter(this);
 		adapter2 = new UnitsAdapter(this);
+
 		recyclerView.setAdapter(adapter);
 		recyclerView2.setAdapter(adapter2);
+
 		GridLayoutManager layoutManager = new GridLayoutManager(this, 6);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this, 4);
 		layoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -61,8 +127,20 @@ public class Timetable extends Activity {
 				startActivity(intent);
 			}
 		});
-	}
 
+	}
+	private Runnable runnable = new Runnable() {
+		@Override
+		public void run() {
+			updateDate();
+			handler.postDelayed(this, 1000); // Update every second
+		}
+	};
+	private void updateDate() {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+		String currentDateAndTime = dateFormat.format(new Date());
+		dateTextView.setText(currentDateAndTime);
+	}
 }
 	
 	
