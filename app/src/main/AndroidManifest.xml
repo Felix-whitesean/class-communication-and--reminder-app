@@ -3,20 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
 	package="com.felixwhitesean.classcommapp" >
 	<uses-permission android:name="android.permission.INTERNET"/>
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
-
-
 		android:icon="@mipmap/ic_launcher"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:allowBackup="true"
 		android:theme="@style/AppTheme"
 		android:label="@string/app_name" >
+		<activity
+			android:name=".UserInformationSQLite_Activity"
+			android:exported="true" >
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 		<activity
 			android:name=".userInfoActivity"
 			android:configChanges="orientation|keyboardHidden|screenSize"
