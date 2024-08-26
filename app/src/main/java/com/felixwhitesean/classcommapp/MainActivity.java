@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                // Navigate to authentication_page_activity
+                // Navigate to authentication_page_activity
                 if (!isLoggedIn) {
                     Toast.makeText(MainActivity.this, "Sign up to continue", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
