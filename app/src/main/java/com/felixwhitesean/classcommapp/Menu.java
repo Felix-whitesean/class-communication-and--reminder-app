@@ -17,7 +17,7 @@ public class Menu extends Activity {
 	@Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_top);
+        overridePendingTransition(R.anim.slide_in_top, R.anim.slide_out_bottom);
     }
 	public void onCreate(Bundle savedInstanceState) {
 

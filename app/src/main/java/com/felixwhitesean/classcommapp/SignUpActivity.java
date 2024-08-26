@@ -69,7 +69,6 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             // Save login state
                             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
