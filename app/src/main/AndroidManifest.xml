@@ -16,12 +16,9 @@
 		android:label="@string/app_name" >
 		<activity
 			android:name=".UserInformationSQLite_Activity"
-			android:exported="true" >
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
+			android:exported="true"
+			android:configChanges="orientation|keyboardHidden|screenSize"
+			android:label="User Info SQLITE">
 		</activity>
 		<activity
 			android:name=".userInfoActivity"
