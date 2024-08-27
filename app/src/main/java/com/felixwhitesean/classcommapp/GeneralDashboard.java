@@ -44,9 +44,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GeneralDashboard extends AppCompatActivity {
     TextView title, coursename;
+    View notificationIndicator, todayIndicator;
     FirebaseFirestore db;
     String userUID, course, courseDetails, department, userDetails;
-    DocumentReference docRef, courseSchedule,docRef2, ref3;
+    DocumentReference docRef;
     Button menuBtn, todaysSchedule, upcoming_notification_btn;
     SharedPreferences sharedPref, sessionPref;
     private static final String PREFS_NAME = "UserLoginPrefs";
@@ -59,6 +60,8 @@ public class GeneralDashboard extends AppCompatActivity {
         todaysSchedule = findViewById(R.id.todays_schedule);
         upcoming_notification_btn = findViewById(R.id.upcoming_notification_btn);
         title = findViewById(R.id.title);
+        notificationIndicator = findViewById(R.id.notificationIndicator);
+        todayIndicator = findViewById(R.id.todayIndicator);
         sharedPref = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         userUID = sharedPref.getString(CURRENT_USER_ID, null);
         db = FirebaseFirestore.getInstance();
@@ -68,7 +71,6 @@ public class GeneralDashboard extends AppCompatActivity {
 //        Toast.makeText(this, userDetails, Toast.LENGTH_SHORT).show();
 
         docRef = db.collection("users").document(userUID);
-//        docRef2 = db.collection("timetable").document("ct-timetable");
         JSONObject currentUserDetails = getUserDetails(userDetails);
 
         if(currentUserDetails != null){
@@ -118,16 +120,16 @@ public class GeneralDashboard extends AppCompatActivity {
                                                         try {
                                                             // Create a new JSONObject for each session
                                                             JSONObject sessionObject = new JSONObject();
-                                                            sessionObject.put("Room", document.getString("room"));
-                                                            sessionObject.put("Duration", document.getString("time_period"));
                                                             sessionObject.put("Lecturer", document.getString("lecturerName"));
                                                             sessionObject.put("Unit", document.getString("unit"));
+                                                            sessionObject.put("Period", document.getString("time_period"));
+                                                            sessionObject.put("AlarmStatus",document.getBoolean("alarm_status"));
 
                                                             // Add the sessionObject to the schedulesArray
                                                             schedulesArray.put(sessionObject);
 
                                                             // Debugging: Show intermediate result
-                                                            Toast.makeText(getApplicationContext(), "Session fetched: " + sessionObject.toString(), Toast.LENGTH_SHORT).show();
+//                                                            Toast.makeText(getApplicationContext(), "Session fetched: " + sessionObject.toString(), Toast.LENGTH_SHORT).show();
 
                                                         } catch (JSONException e) {
                                                             e.printStackTrace();
@@ -145,17 +147,19 @@ public class GeneralDashboard extends AppCompatActivity {
                                                 // Check if all tasks are done
                                                 if (counter.get() == sessionsArray.length) {
                                                     // All Firestore tasks have been completed, now display final result
-                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
+//                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
 
                                                     // Loop through schedulesArray to display each session's details
                                                     JSONArray todayScheduleArray = new JSONArray();
+                                                    JSONArray notificationsArray = new JSONArray();
                                                     for (int n = 0; n < schedulesArray.length(); n++) {
                                                         try {
                                                             JSONObject session = schedulesArray.getJSONObject(n);
-                                                            String room = session.getString("Room");
-                                                            String duration = session.getString("Duration");
+//                                                            String room = session.getString("Room");
+                                                            String alarmStatus = session.getString("AlarmStatus");
                                                             String lecturer = session.getString("Lecturer");
                                                             String unit = session.getString("Unit");
+                                                            String time_period = session.getString("Period");
 
                                                             JSONObject todaysScheduleDetails = new JSONObject();
                                                             todaysScheduleDetails.put("Unit", unit);
@@ -163,18 +167,35 @@ public class GeneralDashboard extends AppCompatActivity {
 
                                                             todayScheduleArray.put(todaysScheduleDetails);
 
+                                                            JSONObject todayNotificationsDetails = new JSONObject();
+                                                            todayNotificationsDetails.put("Unit", unit);
+                                                            todayNotificationsDetails.put("Lecturer", lecturer);
+                                                            todayNotificationsDetails.put("Period", time_period);
+                                                            todayNotificationsDetails.put("Alarm", alarmStatus);
+
+                                                            notificationsArray.put(todayNotificationsDetails);
+
                                                         } catch (JSONException e) {
                                                             e.printStackTrace();
                                                         }
                                                     }
                                                     String jsonString = todayScheduleArray.toString();
+                                                    String jsonString2 = notificationsArray.toString();
                                                     todaysSchedule.setOnClickListener(new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
                                                             getTodaySchedule(jsonString);
                                                         }
-
                                                     });
+                                                    upcoming_notification_btn.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            getAvailableNotifications(jsonString2);
+                                                        }
+                                                    });
+                                                    if (savedInstanceState == null) {
+                                                        todaysSchedule.callOnClick();
+                                                    }
                                                 }
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
@@ -187,7 +208,7 @@ public class GeneralDashboard extends AppCompatActivity {
                                                 // Ensure completion handling when all tasks are done
                                                 if (counter.get() == sessionsArray.length) {
                                                     // Final result even if some tasks failed
-                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
+//                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
                                                 }
                                             }
                                         });
@@ -211,9 +232,6 @@ public class GeneralDashboard extends AppCompatActivity {
             Intent intent = new Intent(GeneralDashboard.this, MainActivity.class);
             startActivity(intent);
         }
-//        if (savedInstanceState == null) {
-//            todaysSchedule.callOnClick();
-//        }
         menuBtn = findViewById(R.id.icon);
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,18 +241,6 @@ public class GeneralDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        upcoming_notification_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                title.setText("Upcoming Notification");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new UpcomingNotifications())
-                        .commit();
-            }
-        });
-
-
     }
 
     public void setCurrentUserCourseName(String course) {
@@ -247,12 +253,25 @@ public class GeneralDashboard extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("schedules", schedulesString);
         // Set the bundle as arguments to the fragment
+        notificationIndicator.setBackgroundResource(0);
+        todayIndicator.setBackgroundResource(R.drawable.rectangle_18);
         todaysScheduleFragment.setArguments(bundle);
         title.setText("Today's Schedule");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, todaysScheduleFragment)
                 .commit();
 
+    }
+    public void getAvailableNotifications(String notifications){
+        Fragment  upcomingNotifications= new UpcomingNotifications();
+        Bundle bundle = new Bundle();
+        bundle.putString("Notifications", notifications);
+        upcomingNotifications.setArguments(bundle);
+//        android:background="@drawable/rectangle_18"
+        todayIndicator.setBackgroundResource(0);
+        notificationIndicator.setBackgroundResource(R.drawable.rectangle_18);
+        title.setText("Upcoming Notification");
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, upcomingNotifications).commit();
     }
     public JSONObject getUserDetails(String userDetails) {
         JSONObject result = null;
