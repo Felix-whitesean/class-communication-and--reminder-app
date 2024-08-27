@@ -101,8 +101,7 @@
 			android:label="Test page"
 			android:exported="true">
 		</activity>
-		<receiver android:name=".AlarmReceiver"
-		/>
+		<receiver android:name=".AlarmReceiver"/>
 	</application>
 
 </manifest>

@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,17 +34,17 @@ public class LoginActivity extends Activity {
     public static final String IS_LOGGED_IN = "IsLoggedIn";
     public static final String CURRENT_USER_ID = "CurrentUserId";
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(),GeneralDashboard.class);
-            startActivity(intent);
-            finish(); // Close LoginActivity after redirecting
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            Intent intent = new Intent(getApplicationContext(),GeneralDashboard.class);
+//            startActivity(intent);
+//            finish(); // Close LoginActivity after redirecting
+//        }
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,12 +80,21 @@ public class LoginActivity extends Activity {
                                     currentUser = FirebaseAuth.getInstance().getCurrentUser();
                                     if(currentUser != null) {
                                         String userUID = currentUser.getUid();
-                                        Toast.makeText(LoginActivity.this, userUID, Toast.LENGTH_SHORT).show();
                                         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                                         SharedPreferences.Editor editor = prefs.edit();
                                         editor.putBoolean(IS_LOGGED_IN, true);
                                         editor.putString(CURRENT_USER_ID, userUID);
                                         editor.apply();
+
+                                        Data inputData = new Data.Builder().putString("userId", userUID).build();
+                                        OneTimeWorkRequest fetchUserDetailsWork = new OneTimeWorkRequest.Builder(UserDetailsWorker.class).setInputData(inputData).build();
+                                //        OneTimeWorkRequest setAlarmWork = new OneTimeWorkRequest.Builder(AlarmWorker.class).build();
+                                        // Enqueue the work to be run in the background
+                                        WorkManager.getInstance(getApplicationContext()).enqueue(fetchUserDetailsWork);
+                                //        WorkManager.getInstance(getApplicationContext()).enqueue(setAlarmWork);
+                                    }
+                                    else{
+
                                     }
                                     Toast.makeText(LoginActivity.this, "Login Successful.",
                                             Toast.LENGTH_SHORT).show();
@@ -94,7 +106,6 @@ public class LoginActivity extends Activity {
 
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-
                                 }
                             }
                         });

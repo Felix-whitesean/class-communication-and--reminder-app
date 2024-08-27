@@ -7,58 +7,11 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <RelativeLayout
-            android:background="@drawable/lecturer_dashboard_containers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="5dp">
-            <TextView
-                android:id="@+id/course_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Course name"
-                android:textColor="#0964AD"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/lecturer_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lecturer Name"
-                android:textColor="#042948"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                android:layout_below="@id/course_name"/>
-        </RelativeLayout>
-        <RelativeLayout
-            android:background="@drawable/lecturer_dashboard_containers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_margin="5dp">
-            <TextView
-                android:id="@+id/course_name_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Course name"
-                android:textColor="#0964AD"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/lecturer_name_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lecturer Name"
-                android:textStyle="italic"
-                android:textColor="#042948"
-                android:textSize="16sp"
-                android:layout_below="@id/course_name_1"
-                />
-        </RelativeLayout>
+
     </LinearLayout>
 
 </FrameLayout>

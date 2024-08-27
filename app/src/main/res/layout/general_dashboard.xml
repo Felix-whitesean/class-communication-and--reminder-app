@@ -500,23 +500,45 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/todays_schedule"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toStartOf="@id/upcoming_notification_btn"
-                android:background="@drawable/icon_net" />
-
-            <Button
-                android:id="@+id/upcoming_notification_btn"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_toStartOf="@id/not"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/todays_schedule"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/icon_net" />
+                <View
+                    android:id="@+id/todayIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/not"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="5dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/bell_04" />
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/upcoming_notification_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bell_04" />
+                <View
+                    android:id="@+id/notificationIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
     <ScrollView

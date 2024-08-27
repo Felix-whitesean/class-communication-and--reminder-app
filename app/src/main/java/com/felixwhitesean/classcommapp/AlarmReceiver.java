@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
@@ -46,6 +47,11 @@ public class AlarmReceiver extends BroadcastReceiver {
                     NotificationManager.IMPORTANCE_HIGH
             );
             notificationManager.createNotificationChannel(channel);
+            Toast.makeText(context, "channel", Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            Toast.makeText(context, "SDK build version can't support service", Toast.LENGTH_SHORT).show();
         }
 
         // Create an intent that will be triggered when the user taps the notification
