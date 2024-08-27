@@ -6,12 +6,15 @@ import android.os.Bundle;
 
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Menu extends Activity {
 
 
-	private TextView TextView1, TextView2, TextView3, TextView4;
+	private TextView TextView1, TextView2, TextView3, TextView4, TextView5;
+
+	private Button btnLogout;
 
 
 	@Override
@@ -30,7 +33,17 @@ public class Menu extends Activity {
 			TextView2 = findViewById(R.id.account_ek1);
 			TextView3 = findViewById(R.id.notifications);
 			TextView4 = findViewById(R.id.timetable);
+			TextView5 = findViewById(R.id.home);
 
+			btnLogout= findViewById(R.id.logout);
+
+		btnLogout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(Menu.this, SignUpActivity.class);
+				startActivity(intent);
+			}
+		});
 
 		// Set click listeners for each view
 			TextView1.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +81,15 @@ public class Menu extends Activity {
 					startActivity(intent);
 				}
 			});
+
+		TextView5.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Navigate to ActivityC
+				Intent intent = new Intent(Menu.this,MainActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 }
 	

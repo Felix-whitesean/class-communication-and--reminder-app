@@ -82,6 +82,7 @@
     <string name="about_us_string">About us</string>
     <string name="vector_ek10">vector_ek10</string>
     <string name="notifications">Notifications</string>
+    <string name="logout">Log out</string>
 
     <!--spinner array options -->
     <string-array name="user_category">
