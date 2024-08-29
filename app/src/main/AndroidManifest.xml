@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-	package="com.felixwhitesean.classcommapp" >
-	<uses-permission android:name="android.permission.INTERNET"/>
+    package="com.felixwhitesean.classcommapp">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-	<uses-permission android:name="android.permission.VIBRATE" />
-	<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
-		android:icon="@mipmap/ic_launcher"
-		android:roundIcon="@mipmap/ic_launcher_round"
-		android:allowBackup="true"
-		android:theme="@style/AppTheme"
-		android:label="@string/app_name" >
-		<activity
-			android:name=".UserInformationSQLite_Activity"
-			android:exported="true" >
-<!--			<intent-filter>-->
-<!--				<action android:name="android.intent.action.MAIN" />-->
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SensorActivity"
+            android:exported="true" >
 
 <!--				<category android:name="android.intent.category.LAUNCHER" />-->
 <!--			</intent-filter>-->
@@ -39,77 +46,75 @@
 			android:name=".MainActivity"
 			android:configChanges="orientation|keyboardHidden|screenSize"
 			android:label="@string/app_name"
-			android:exported="true"
-            tools:ignore="RedundantLabel">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
-		<activity
-			android:name=".SignUpActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Sign Up"
 			android:exported="true">
-		</activity>
-		<activity
-			android:name=".GeneralDashboard"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Sign Up"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".Menu"
-			android:theme="@style/Theme.App.Transparent"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Sign Up"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".LecturerDashboardActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Sign Up"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".ScheduleSettings"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Schedule settings"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".TestActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Test page"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".student_dashboard_general_activity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="General settings"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".NotificationsActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Test page"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".LoginActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Log In"
-			android:exported="true">
-		</activity>
-		<activity
-			android:name=".Timetable"
-			android:configChanges="orientation|keyboardHidden|screenSize"
-			android:label="Test page"
-			android:exported="true">
-		</activity>
-		<receiver android:name=".AlarmReceiver"/>
-	</application>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserInformationSQLite_Activity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".userInfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="User Info"></activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Sign Up"></activity>
+        <activity
+            android:name=".GeneralDashboard"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Sign Up"></activity>
+        <activity
+            android:name=".Menu"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Sign Up"
+            android:theme="@style/Theme.App.Transparent"></activity>
+        <activity
+            android:name=".LecturerDashboardActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Sign Up"></activity>
+        <activity
+            android:name=".ScheduleSettings"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Schedule settings"></activity>
+        <activity
+            android:name=".TestActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Test page"></activity>
+        <activity
+            android:name=".student_dashboard_general_activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="General settings"></activity>
+        <activity
+            android:name=".NotificationsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Test page"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Log In"></activity>
+        <activity
+            android:name=".Timetable"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Test page"></activity>
+
+        <receiver android:name=".AlarmReceiver" />
+    </application>
 
 </manifest>
-	
-	
