@@ -3,17 +3,20 @@ package com.felixwhitesean.classcommapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 public class TodaysScheduleWorker extends Worker {
@@ -40,21 +43,36 @@ public class TodaysScheduleWorker extends Worker {
             final boolean[] isSuccessful = {false};
             List<String> trueSessions = new ArrayList<>();
             CountDownLatch latch = new CountDownLatch(1);
+            JSONArray jsonArray = new JSONArray();
+            JSONArray jsonArray2 = new JSONArray();
+
 
             firestore.collection("timetable").document(timetableName).get()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
+                                boolean session0 = document.getBoolean("session0");
                                 boolean session1 = document.getBoolean("session1");
                                 boolean session2 = document.getBoolean("session2");
                                 boolean session3 = document.getBoolean("session3");
                                 boolean session4 = document.getBoolean("session4");
-                                boolean session5 = document.getBoolean("session5");
 
-                                boolean[] sessions = {session1, session2, session3, session4, session5};
-                                String[] sessionNames = {"session1", "session2", "session3", "session4", "session5"};
+                                boolean[] sessions = {session0, session1, session2, session3, session4};
+                                String[] sessionNames = {"session0", "session1", "session2", "session3", "session4"};
 
+                                for (boolean session : sessions) {
+                                    jsonArray.put(session);
+                                    SharedPreferences.Editor editor = sp.edit();
+                                    editor.putString("TodaySchedule", jsonArray.toString());
+                                    editor.apply();
+                                }
+                                for (String sessionName : sessionNames) {
+                                    jsonArray2.put(sessionName);
+                                    SharedPreferences.Editor editor = sp.edit();
+                                    editor.putString("TodayClasses", jsonArray2.toString());
+                                    editor.apply();
+                                }
                                 for (int i = 0; i < sessions.length; i++) {
                                     if (sessions[i]) {
                                         trueSessions.add(sessionNames[i]); // Add the session name to the list if true

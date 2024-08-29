@@ -23,6 +23,8 @@
 	<color name="local_colors_color">#525252</color>
 	<color name="ellipse_20_color">#FFC600</color>
 	<color name="rectangle_1_color">#ffffff</color>
+	<color name="toggleOn">#22C855</color>
+	<color name="toggleBg">#042948</color>
 	<color name="rectangle_3_ek1_color">#032947</color>
 	<color name="home_indicator_color">#000000</color>
 	<color name="rectangle_26_color">#D9D9D9</color>

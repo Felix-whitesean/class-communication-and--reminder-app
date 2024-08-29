@@ -59,7 +59,7 @@ public class Menu extends Activity {
 				@Override
 				public void onClick(View v) {
 					// Navigate to ActivityB
-					Intent intent = new Intent(Menu.this, GeneralDashboard.class);
+					Intent intent = new Intent(Menu.this, ClassrepDashboard.class);
 					startActivity(intent);
 				}
 			});

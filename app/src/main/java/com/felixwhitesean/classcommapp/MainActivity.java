@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         boolean isLoggedIn = prefs.getBoolean(IS_LOGGED_IN, false);
         userUID = prefs.getString(CURRENT_USER_ID, null);
         if(userUID == null){
-            Intent intent = new Intent( MainActivity.this, SignUpActivity.class);
+            Intent intent = new Intent( MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }

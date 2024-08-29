@@ -60,7 +60,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.alarm_01)
+                .setSmallIcon(R.drawable.bell_icon)
                 .setContentTitle("Alarm")
                 .setContentText("It's class time!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

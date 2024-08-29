@@ -89,7 +89,6 @@ public class GeneralDashboard extends AppCompatActivity {
         String uuidString = sessionPref.getString("workRequestId", null);
         if (uuidString != null) {
             UUID workRequestId = UUID.fromString(uuidString);
-
             WorkManager.getInstance(getApplicationContext())
                     .getWorkInfoByIdLiveData(workRequestId)
                     .observe(this, workInfo -> {

@@ -1,20 +1,5 @@
 package com.felixwhitesean.classcommapp;
 
-
-/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		general_dashboard__2
-	 *	@date 		Sunday 21st of July 2024 09:59:30 AM
-	 *	@title 		Page 1
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;

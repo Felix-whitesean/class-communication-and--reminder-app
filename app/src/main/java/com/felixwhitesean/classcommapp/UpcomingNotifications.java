@@ -12,6 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.OutOfQuotaPolicy;
+import androidx.work.WorkManager;
 
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -33,6 +37,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 
 public class UpcomingNotifications extends Fragment {
@@ -82,8 +87,7 @@ public class UpcomingNotifications extends Fragment {
                         LinearLayout.LayoutParams.MATCH_PARENT,  // equivalent to android:layout_width="match_parent"
                         LinearLayout.LayoutParams.WRAP_CONTENT   // equivalent to android:layout_height="wrap_content"
                 );
-                int marginInDp = (int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+                int marginInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
                 layoutParam.setMargins(marginInDp, marginInDp, marginInDp, marginInDp);
 
                 // Set padding (equivalent to android:padding="10dp")
@@ -195,6 +199,21 @@ public class UpcomingNotifications extends Fragment {
                 // Get the new formatted time
                 String formattedTime = outputFormat.format(calendar.getTime());
                 timeTv.setText(formattedTime);
+
+                Data data = new Data.Builder().putString("nextAlarm", formattedTime).build();
+                OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(AlarmWorker.class).setInputData(data).setExpedited(
+                        OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST).build();
+                UUID workRequestId = oneTimeWorkRequest.getId();
+                WorkManager.getInstance(getContext()).enqueue(oneTimeWorkRequest);
+
+                WorkManager.getInstance(getContext())
+                        .getWorkInfoByIdLiveData(workRequestId)
+                        .observe(getViewLifecycleOwner(), workInfo -> {
+                            if (workInfo != null && workInfo.getState().isFinished()) {
+                                Toast.makeText(getContext(), "Alarm work setting finished", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                 timeTv.setTextColor(Color.parseColor("#0964AD"));
                 unitDetailsLinearLayout.addView(timeTv);
             } catch (ParseException e) {

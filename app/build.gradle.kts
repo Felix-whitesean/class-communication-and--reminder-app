@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.work.runtime)
     implementation("com.google.guava:guava:30.1-android")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

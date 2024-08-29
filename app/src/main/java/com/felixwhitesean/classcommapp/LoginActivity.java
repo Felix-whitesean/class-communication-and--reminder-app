@@ -1,6 +1,7 @@
 package com.felixwhitesean.classcommapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,11 +24,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.UUID;
+
 public class LoginActivity extends Activity {
     FirebaseAuth mAuth;
     FirebaseUser currentUser;
     private TextView Ultimate, signUpRedirect;
     private Button Login ;
+    private SharedPreferences sharedPreferences;
     private EditText email,Password;
 
     public static final String PREFS_NAME = "UserLoginPrefs";
@@ -55,6 +59,7 @@ public class LoginActivity extends Activity {
         email= findViewById(R.id.Email);
         Password= findViewById(R.id.password);
         signUpRedirect = findViewById(R.id.signup_here_redirect);
+        sharedPreferences = getSharedPreferences("sessionVariables", Context.MODE_PRIVATE);
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +93,12 @@ public class LoginActivity extends Activity {
 
                                         Data inputData = new Data.Builder().putString("userId", userUID).build();
                                         OneTimeWorkRequest fetchUserDetailsWork = new OneTimeWorkRequest.Builder(UserDetailsWorker.class).setInputData(inputData).build();
-                                //        OneTimeWorkRequest setAlarmWork = new OneTimeWorkRequest.Builder(AlarmWorker.class).build();
-                                        // Enqueue the work to be run in the background
+                                        UUID workRequestId = fetchUserDetailsWork.getId();
+
+                                        SharedPreferences.Editor edt = sharedPreferences.edit();
+                                        edt.putString("UDworkId", workRequestId.toString());
+                                        edt.apply();
+
                                         WorkManager.getInstance(getApplicationContext()).enqueue(fetchUserDetailsWork);
                                 //        WorkManager.getInstance(getApplicationContext()).enqueue(setAlarmWork);
                                     }

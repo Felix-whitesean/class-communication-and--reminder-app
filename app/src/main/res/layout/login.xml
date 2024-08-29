@@ -125,7 +125,7 @@
 					<ImageView
 						android:id="@+id/_1_ao_1"
 						android:layout_width="wrap_content"
-						android:layout_height="623.24dp"
+						android:layout_height="wrap_content"
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
 						android:contentDescription="_1_ao_1"
@@ -133,8 +133,8 @@
 
 					<ImageView
 						android:id="@+id/_1_ao_1_ek2"
-						android:layout_width="match_parent"
-						android:layout_height="623.24dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
 						android:contentDescription="_1_ao_1_ek2"

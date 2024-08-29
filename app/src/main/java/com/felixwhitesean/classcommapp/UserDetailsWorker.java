@@ -50,13 +50,14 @@ public class UserDetailsWorker extends Worker {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            String course = document.getString("course");
-                            String department = document.getString("department");
-                            // Convert document to JSON
                             Gson gson = new Gson();
                             JsonObject jsonObject = new JsonObject();
+                            //Fetching user details
+                            String course = document.getString("course");
+                            String department = document.getString("department");
                             jsonObject.addProperty("username", document.getString("username"));
                             jsonObject.addProperty("email", document.getString("email"));
+                            jsonObject.addProperty("category", document.getString("user_category"));
                             jsonObject.addProperty("course", course);
                             jsonObject.addProperty("department", department);
                             jsonObject.addProperty("phone", document.getString("phone_number"));
