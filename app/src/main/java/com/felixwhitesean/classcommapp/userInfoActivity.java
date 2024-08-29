@@ -123,7 +123,6 @@ public class userInfoActivity extends Activity {
 							public void onSuccess(Void aVoid) {
 								// User successfully added to Firestore
 								Toast.makeText(userInfoActivity.this, "Successfully added the user: " + username, Toast.LENGTH_SHORT).show();
-								Log.d("successmessage", "User added successfull");
 								finish();
 							}
 						}).addOnFailureListener(new OnFailureListener() {
@@ -131,7 +130,6 @@ public class userInfoActivity extends Activity {
 							public void onFailure(@NonNull Exception e) {
 								// Handle any errors
 								Toast.makeText(userInfoActivity.this, "Error in adding new user " + username, Toast.LENGTH_SHORT).show();
-								Log.d("errormessage", "Signup not successfull");
 							}
 						});
 					}
@@ -151,11 +149,9 @@ public class userInfoActivity extends Activity {
 								for(QueryDocumentSnapshot doc: task.getResult()) {
 									User user = doc.toObject(User.class);
 									arrayList.add(user);
-								}
-								Log.d(TAG, document.getId() + " => " + document.getData());
-							}
+								}}
 						} else {
-							Log.w(TAG, "Error getting documents.", task.getException());
+							Toast.makeText(userInfoActivity.this, "Error getting documents.", Toast.LENGTH_SHORT).show();
 						}
 					}
 				});

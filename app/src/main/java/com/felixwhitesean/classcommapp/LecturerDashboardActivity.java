@@ -18,7 +18,7 @@ public class LecturerDashboardActivity extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 // Do something with the selected date
                 String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                Toast.makeText(LecturerDashboardActivity.this, "Selected date: " + selectedDate, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LecturerDashboardActivity.this, selectedDate, Toast.LENGTH_SHORT).show();
             }
         });
 

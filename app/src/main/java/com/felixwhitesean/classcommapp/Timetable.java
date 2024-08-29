@@ -72,11 +72,9 @@ public class Timetable extends Activity {
 							coursename.setText(courseDetails);
 						} else {
 							Toast.makeText(Timetable.this, "No such document", Toast.LENGTH_SHORT).show();
-							Log.d("Firebase", "No such document");
 						}
 					} else {
 						Toast.makeText(Timetable.this, "get failed with "+task.getException(), Toast.LENGTH_SHORT).show();
-						Log.d("Firebase", "get failed with ", task.getException());
 					}
 				}
 			});

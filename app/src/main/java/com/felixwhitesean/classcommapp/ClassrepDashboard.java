@@ -87,7 +87,7 @@ public class ClassrepDashboard extends AppCompatActivity {
 //            lecturerName.setText(username);
 //            courseDisplay.setText(course);
 
-            Toast.makeText(this, username + " " + course, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, username + " " + course, Toast.LENGTH_SHORT).show();
         }
         String uuidString = sessionPref.getString("workRequestId", null);
         if (uuidString != null) {
@@ -180,8 +180,7 @@ public class ClassrepDashboard extends AppCompatActivity {
                                                                         LinearLayout.LayoutParams.MATCH_PARENT,  // equivalent to android:layout_width="match_parent"
                                                                         LinearLayout.LayoutParams.WRAP_CONTENT   // equivalent to android:layout_height="wrap_content"
                                                                 );
-                                                                int marginInDp = (int) TypedValue.applyDimension(
-                                                                        TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+                                                                int marginInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
                                                                 layoutParam.setMargins(marginInDp, marginInDp, marginInDp, marginInDp);
 //                                                                int paddingInDp = (int) TypedValue.applyDimension(
 //                                                                        TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
@@ -193,8 +192,7 @@ public class ClassrepDashboard extends AppCompatActivity {
                                                                     linearLayout.setBackgroundResource(R.drawable.absent);
                                                                 }
                                                                 // Set padding (equivalent to android:padding="10dp")
-                                                                int paddingInDp = (int) TypedValue.applyDimension(
-                                                                        TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+                                                                int paddingInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
                                                                 linearLayout.setPadding(paddingInDp, paddingInDp, paddingInDp, paddingInDp);
                                                                 linearLayout.setLayoutParams(layoutParam);
                                                             } catch (JSONException e) {
@@ -214,7 +212,7 @@ public class ClassrepDashboard extends AppCompatActivity {
                                                 // Ensure completion handling when all tasks are done
                                                 if (counter.get() == scheduleList.size()) {
                                                     // Final result even if some tasks failed
-                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
+//                                                    Toast.makeText(getApplicationContext(), "Final Schedule Array: " + schedulesArray.toString(), Toast.LENGTH_LONG).show();
                                                 }
                                             }
                                         });
@@ -244,7 +242,7 @@ public class ClassrepDashboard extends AppCompatActivity {
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 // Do something with the selected date
                 String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                Toast.makeText(ClassrepDashboard.this, "Selected date: " + selectedDate, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ClassrepDashboard.this, "Selected date: " + selectedDate, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -358,14 +356,13 @@ public class ClassrepDashboard extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(ClassrepDashboard.this, "Database updated successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ClassrepDashboard.this, "Class updated successfully", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(ClassrepDashboard.this, "Error updating document", Toast.LENGTH_SHORT).show();
-//                        Log.w("FirebaseUpdate", "Error updating document", e);
                     }
                 });
     }

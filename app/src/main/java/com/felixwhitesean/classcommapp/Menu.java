@@ -26,7 +26,6 @@ public class Menu extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.android_large___2);
 
-
 			// Initialize views
 			TextView1 = findViewById(R.id.setting);
 			TextView2 = findViewById(R.id.account);

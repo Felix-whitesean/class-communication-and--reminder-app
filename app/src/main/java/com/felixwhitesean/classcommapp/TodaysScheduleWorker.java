@@ -3,6 +3,7 @@ package com.felixwhitesean.classcommapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.work.OneTimeWorkRequest;
@@ -83,12 +84,10 @@ public class TodaysScheduleWorker extends Worker {
                                     SharedPreferences.Editor editor = sp.edit();
                                     editor.putString("TodaySessions", trueSessions.toString());
                                     editor.apply();
-                                    Log.d("Result", trueSessions.toString());
                                 }else{
                                     SharedPreferences.Editor editor = sp.edit();
                                     editor.putString("TodaySessions", "No session today");
                                     editor.apply();
-                                    Log.d("Result","No session today");
                                 }
 
                                 isSuccessful[0] = true;
@@ -96,14 +95,14 @@ public class TodaysScheduleWorker extends Worker {
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putString("TodaySessions", String.valueOf(document));
                                 editor.apply();
-                                Log.d("Error","Document not found");
+                                Toast.makeText(getApplicationContext(), "Document not found", Toast.LENGTH_SHORT).show();
                                 // Handle document not found
                                 isSuccessful[0] = false;
                             }
                         } else {
                             // Handle Firestore errors
                             isSuccessful[0] = false;
-                            Log.d("Error","Error fetching user details");
+                            Toast.makeText(getApplicationContext(), "Error fetching user details", Toast.LENGTH_SHORT).show();
                         }
                         latch.countDown();
                         // Return Result based on success or failure
@@ -111,7 +110,7 @@ public class TodaysScheduleWorker extends Worker {
             try {
                 latch.await();  // Wait for Firestore task to complete
             } catch (InterruptedException e) {
-                Log.e("Firestore", "Error waiting for Firestore task", e);
+//                Log.e("Firestore", "Error waiting for Firestore task", e);
                 return Result.failure();
             }
             return isSuccessful[0] ? Result.success(): Result.failure();

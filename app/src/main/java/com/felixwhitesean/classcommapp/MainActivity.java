@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                     SharedPreferences.Editor edt = sp.edit();
                                     edt.putString("timetable", course); // Assuming latestTimetable is your new selection
                                     edt.apply();
-                                    Toast.makeText(MainActivity.this, course, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, course, Toast.LENGTH_SHORT).show();
                                 }else{
                                     Toast.makeText(MainActivity.this, "didn't find the user", Toast.LENGTH_SHORT).show();
                                 }
