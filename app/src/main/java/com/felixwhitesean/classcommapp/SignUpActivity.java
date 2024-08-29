@@ -76,11 +76,10 @@ public class SignUpActivity extends AppCompatActivity {
                             editor.apply();
 
                             Toast.makeText(SignUpActivity.this, "Account created.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                            Intent intent = new Intent(SignUpActivity.this, userInfoActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
-
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SignUpActivity.this, "Sign up failed. Please try again", Toast.LENGTH_SHORT).show();
                         }

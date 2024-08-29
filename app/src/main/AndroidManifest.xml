@@ -26,9 +26,6 @@
         <activity
             android:name=".SensorActivity"
             android:exported="true" >
-
-<!--				<category android:name="android.intent.category.LAUNCHER" />-->
-<!--			</intent-filter>-->
 		</activity>
 		<activity
 			android:name=".userInfoActivity"
@@ -49,7 +46,6 @@
 			android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
-
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
@@ -58,61 +54,51 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".userInfoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true"
-            android:label="User Info"></activity>
-        <activity
             android:name=".SignUpActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Sign Up"></activity>
+            android:label="Sign Up" />
         <activity
             android:name=".GeneralDashboard"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Sign Up"></activity>
+            android:label="Sign Up" />
         <activity
             android:name=".Menu"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="Sign Up"
-            android:theme="@style/Theme.App.Transparent"></activity>
+            android:theme="@style/Theme.App.Transparent" />
         <activity
             android:name=".LecturerDashboardActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Sign Up"></activity>
+            android:label="Sign Up" />
         <activity
             android:name=".ScheduleSettings"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Schedule settings"></activity>
-        <activity
-            android:name=".TestActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:exported="true"
-            android:label="Test page"></activity>
+            android:label="Schedule settings" />
         <activity
             android:name=".student_dashboard_general_activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="General settings"></activity>
+            android:label="General settings" />
         <activity
             android:name=".NotificationsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Test page"></activity>
+            android:label="Test page" />
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Log In"></activity>
+            android:label="Log In" />
         <activity
             android:name=".Timetable"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
-            android:label="Test page"></activity>
+            android:label="Test page" />
 
         <receiver android:name=".AlarmReceiver" />
     </application>
