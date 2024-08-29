@@ -7,13 +7,12 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Menu extends Activity {
 
-
-	private TextView TextView1, TextView2, TextView3, TextView4, TextView5;
-
+	private RelativeLayout FinalBtn, TextView5, TextView4, TextView3, TextView2, TextView1;
 	private Button btnLogout;
 
 
@@ -29,12 +28,12 @@ public class Menu extends Activity {
 
 
 			// Initialize views
-			TextView1 = findViewById(R.id.setting_ek1);
-			TextView2 = findViewById(R.id.account_ek1);
-			TextView3 = findViewById(R.id.notifications);
-			TextView4 = findViewById(R.id.timetable);
-			TextView5 = findViewById(R.id.home);
-
+			TextView1 = findViewById(R.id.setting);
+			TextView2 = findViewById(R.id.account);
+			TextView3 = findViewById(R.id.date);
+			TextView4 = findViewById(R.id.date_ek2);
+			TextView5 = findViewById(R.id.Home);
+			FinalBtn = findViewById(R.id.bkup);
 			btnLogout= findViewById(R.id.logout);
 
 		btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,7 @@ public class Menu extends Activity {
 				@Override
 				public void onClick(View v) {
 					// Navigate to ActivityA
-					Intent intent = new Intent(Menu.this, student_dashboard_general_activity.class);
+					Intent intent = new Intent(Menu.this, SensorActivity.class);
 					startActivity(intent);
 				}
 			});
@@ -87,6 +86,13 @@ public class Menu extends Activity {
 			public void onClick(View v) {
 				// Navigate to ActivityC
 				Intent intent = new Intent(Menu.this,MainActivity.class);
+				startActivity(intent);
+			}
+		});
+		FinalBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(Menu.this,UserInformationSQLite_Activity.class);
 				startActivity(intent);
 			}
 		});

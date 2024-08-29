@@ -83,6 +83,8 @@
     <string name="vector_ek10">vector_ek10</string>
     <string name="notifications">Notifications</string>
     <string name="logout">Log out</string>
+    <string name="backup_locally">Backup locally</string>
+    <string name="update_classes">Update classes</string>
 
     <!--spinner array options -->
     <string-array name="user_category">

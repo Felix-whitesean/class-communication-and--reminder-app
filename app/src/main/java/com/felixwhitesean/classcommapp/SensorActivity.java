@@ -181,24 +181,6 @@ public class SensorActivity extends AppCompatActivity {
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
     }
-
-    private void openDetectionActivity(Bitmap imageBitmap) {
-        Intent intent = new Intent(this, Timetable.class);
-        intent.putExtra("imageBitmap", imageBitmap);
-        startActivity(intent);
-    }
-
-    private void openDetectionActivity(Uri imageUri) {
-        Intent intent = new Intent(this, Timetable.class);
-        intent.putExtra("imageUri", imageUri.toString());
-        startActivity(intent);
-
-    }
-
-//        private class DetectionActivity {
-//    }
-
-
 }
 
 

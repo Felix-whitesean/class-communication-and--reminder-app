@@ -177,7 +177,7 @@
 								android:id="@+id/home"
 								android:layout_width="wrap_content"
 								android:layout_height="27dp"
-								android:layout_marginStart="63dp"
+								android:layout_marginStart="43dp"
 								android:layout_marginTop="5dp"
 								android:fontFamily="Inter"
 								android:text="Home"
@@ -204,6 +204,71 @@
 
 								<ImageView
 									android:id="@+id/vector_15"
+									android:layout_width="9.26dp"
+									android:layout_height="15dp"
+									android:layout_marginStart="10.74dp"
+									android:layout_marginTop="7.5dp"
+									android:contentDescription="vector_ek15"
+									android:src="@drawable/vector_ek15" />
+
+							</RelativeLayout>
+						</RelativeLayout>
+						<RelativeLayout
+							android:id="@+id/bkup"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="28dp"
+							android:layout_marginTop="470.15dp">
+
+							<View
+								android:id="@+id/line_13"
+								android:layout_width="169dp"
+								android:layout_height="1dp"
+								android:layout_marginStart="0dp"
+								android:layout_marginTop="44dp"
+								android:background="@drawable/line_1_ek3_shape" />
+
+
+							<RelativeLayout
+								android:id="@+id/iconRltv"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginStart="8dp"
+								android:layout_marginTop="-0dp">
+
+								<ImageView
+									android:id="@+id/backupIcon"
+									android:layout_width="27.7dp"
+									android:layout_height="22.79dp"
+									android:layout_marginStart="0dp"
+									android:layout_marginTop="10dp"
+									android:contentDescription="vector_ek12"
+									android:src="@drawable/baseline_backup_24" />
+
+							</RelativeLayout>
+
+							<TextView
+								android:id="@+id/bckuptv"
+								android:layout_width="wrap_content"
+								android:layout_height="27dp"
+								android:layout_marginStart="43dp"
+								android:layout_marginTop="5dp"
+								android:fontFamily="Inter"
+								android:text="@string/backup_locally"
+								android:textColor="@color/setting_ek1_color"
+								android:textSize="14sp"
+								android:textStyle="bold" />
+
+
+							<RelativeLayout
+								android:id="@+id/right_arrow"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_marginStart="150dp"
+								android:layout_marginTop="1dp">
+
+								<ImageView
+									android:id="@+id/right_arrow_img_icon"
 									android:layout_width="9.26dp"
 									android:layout_height="15dp"
 									android:layout_marginStart="10.74dp"
@@ -244,7 +309,7 @@
 									android:layout_marginStart="0dp"
 									android:layout_marginTop="0dp"
 									android:contentDescription="vector"
-									android:src="@drawable/settings_icon" />
+									android:src="@drawable/camera" />
 
 							</RelativeLayout>
 
@@ -252,10 +317,10 @@
 								android:id="@+id/setting_ek1"
 								android:layout_width="wrap_content"
 								android:layout_height="27dp"
-								android:layout_marginLeft="53dp"
+								android:layout_marginLeft="43dp"
 								android:layout_marginTop="7dp"
 								android:fontFamily="Inter"
-								android:text="@string/setting_ek1_string"
+								android:text="Update Profile Picture"
 								android:textColor="@color/setting_ek1_color"
 								android:textSize="14sp"
 								android:textStyle="bold" />
@@ -318,10 +383,10 @@
 								android:id="@+id/account_ek1"
 								android:layout_width="wrap_content"
 								android:layout_height="27dp"
-								android:layout_marginStart="53dp"
+								android:layout_marginStart="43dp"
 								android:layout_marginTop="7dp"
 								android:fontFamily="Inter"
-								android:text="@string/account_ek1_string"
+								android:text="@string/update_classes"
 								android:textColor="@color/setting_ek1_color"
 								android:textSize="14sp"
 								android:textStyle="bold" />
@@ -395,7 +460,7 @@
 								android:id="@+id/notifications"
 								android:layout_width="wrap_content"
 								android:layout_height="27dp"
-								android:layout_marginStart="63dp"
+								android:layout_marginStart="43dp"
 								android:layout_marginTop="5dp"
 								android:fontFamily="Inter"
 								android:text="@string/notifications"
@@ -481,7 +546,7 @@
 								android:id="@+id/timetable"
 								android:layout_width="wrap_content"
 								android:layout_height="27dp"
-								android:layout_marginStart="63dp"
+								android:layout_marginStart="43dp"
 								android:layout_marginTop="5dp"
 								android:fontFamily="Inter"
 								android:text="@string/timetable_string"
